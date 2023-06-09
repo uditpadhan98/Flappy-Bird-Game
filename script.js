@@ -1,6 +1,6 @@
 let board;
-let boardWidth=900;
-let boardHeight=504;
+let boardWidth=1270;
+let boardHeight=564;
 let context;
 
 let birdWidth=36; //width/height ratio=200/150=4/3
@@ -76,6 +76,7 @@ function update(){
     velocityY += gravity;
     // bird.y += velocityY;
     bird.y=Math.max(bird.y+velocityY,0);//apply gravity to current bird.y,limit the bird.y to top of the canvas
+    // bird.x=Math.max(bird.x+velocityX,0);
     context.drawImage(birdImg,bird.x,bird.y,bird.width,bird.height);
 
     if(bird.y>board.height){
@@ -110,6 +111,7 @@ function update(){
 
     if(gameOver){
         context.fillText("GAME OVER",5,90);
+        context.fillText("PRESS SPACE",5,140);
     }
 
 }
@@ -123,7 +125,7 @@ function placePipes(){
     //0 = -80 (pipeHeight/4)
     //1 = -80-160 (pipeHeight/4-pipeHeight/2)=-3/4 pipeHeight
 
-    let randomPipeY=pipeY-pipeHeight/4 -Math.random()*(pipeHeight/2);
+    let randomPipeY=pipeY-pipeHeight/6 -Math.random()*(pipeHeight/2);
     let openingSpace=board.height/4;
 
     let topPipe={
